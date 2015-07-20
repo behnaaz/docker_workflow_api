@@ -5,9 +5,8 @@ require 'simplecov'
 require 'factory_girl'
 require 'database_cleaner'
 
-Dir['./spec/support/**/*.rb'].each { |f| require f }
 
-FactoryGirl.definition_file_paths = %w(./spec/factories)
+FactoryGirl.definition_file_paths = %w(./spec/factories ./api/spec/factories)
 FactoryGirl.find_definitions
 
 #SimpleCov.minimum_coverage 90
@@ -16,8 +15,10 @@ SimpleCov.start do
 end
 
 begin
+  Dir['./api/spec/support/**/*.rb'].each { |f| require f }
   require './api/config/environment'
 rescue LoadError
+  Dir['./spec/support/**/*.rb'].each { |f| require f }
   require './config/environment'
 end
 

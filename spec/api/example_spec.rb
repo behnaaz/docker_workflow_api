@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "Example service" do
   it 'show the name of the player' do
     player = create :player
