@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'rack/test'
-#require 'simplecov'
+require 'simplecov'
 require 'factory_girl'
 require 'database_cleaner'
 
@@ -11,10 +11,9 @@ FactoryGirl.definition_file_paths = %w(./spec/factories)
 FactoryGirl.find_definitions
 
 #SimpleCov.minimum_coverage 90
-#SimpleCov.start do
-##  add_filter "/spec\/.*/"
-#  add_filter "/vendor\/.*/"
-#end
+SimpleCov.start do
+  add_filter "/spec\/.*/"
+end
 
 begin
   require './api/config/environment'
@@ -22,12 +21,9 @@ rescue LoadError
   require './config/environment'
 end
 
-ActiveRecord::Base.logger = nil
 def app
-  PoliceExperience::API
+  Example::API
 end
-
-
 
 
 RSpec.configure do |config|
@@ -36,7 +32,6 @@ RSpec.configure do |config|
   config.include Requests::JsonHelpers
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
