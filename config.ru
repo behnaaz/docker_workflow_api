@@ -8,4 +8,4 @@ use Rack::Cors do
   end
 end
 
-run PoliceExperience::API
+run Example::API
