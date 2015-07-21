@@ -1,8 +1,8 @@
 describe "Example service" do
-  it 'show the name of the player' do
-    player = create :player
-    get '/v1/players'
+  it 'show all quotes' do
+    quote = create :quote
+    get '/v1/quotes'
     expect(json.count).to eq 1
-    expect(json[0]["name"]).to eq(player.name)
+    expect(json[0]["text"]).to eq(quote.text)
   end
 end

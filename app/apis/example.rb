@@ -10,9 +10,9 @@ module Example
       {health: 'ok'}
     end
 
-    get 'players' do
-      players = Player.all
-      present players, with: Example::Entities::Player
+    get 'quotes' do
+      quotes = Quote.all
+      present quotes, with: Example::Entities::Quote
     end
 
     route :any, '*path' do
