@@ -19,7 +19,7 @@ ADD . /home/app
 RUN rm -f /etc/service/nginx/down
 ADD nginx/default.conf /etc/nginx/sites-available/default
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
-ADD nginx/mysql-env.conf /etc/nginx/main.d/mysql-env.conf
+ADD nginx/mongo-env.conf /etc/nginx/main.d/mongo-env.conf
 
 EXPOSE 80
 CMD nginx
